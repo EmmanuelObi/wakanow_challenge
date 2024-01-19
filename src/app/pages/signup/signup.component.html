@@ -1,0 +1,96 @@
+<div class="container">
+  <h2 class="heading">Sign Up</h2>
+  <p>{{ userMessage }}</p>
+  <form #userForm="ngForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        [(ngModel)]="userDetails.firstname"
+        required
+      />
+      <div
+        *ngIf="
+          userForm.controls['firstname'] &&
+          userForm.controls['firstname'].touched &&
+          userForm.controls['firstname'].invalid
+        "
+        class="text-danger"
+      >
+        First Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        [(ngModel)]="userDetails.lastname"
+        required
+      />
+      <div
+        *ngIf="
+          userForm.controls['lastname'] &&
+          userForm.controls['lastname'].touched &&
+          userForm.controls['lastname'].invalid
+        "
+        class="text-danger"
+      >
+        Last Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        [(ngModel)]="userDetails.email"
+        required
+        email
+      />
+      <div
+        *ngIf="
+          userForm.controls['email'] &&
+          userForm.controls['email'].touched &&
+          userForm.controls['email'].invalid
+        "
+        class="text-danger"
+      >
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        [(ngModel)]="userDetails.password"
+        required
+      />
+      <div
+        *ngIf="
+          userForm.controls['password'] &&
+          userForm.controls['password'].touched &&
+          userForm.controls['password'].invalid
+        "
+        class="text-danger"
+      >
+        Password is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+  <p>Already signed up? <a href="/login">Login</a></p>
+</div>
